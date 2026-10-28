@@ -111,7 +111,13 @@ scan *.sf in the current directory
 
 ## Installation
 
-Drop this folder into either location, then restart OpenCode
+From npm (recommended):
+
+```
+opencode plugin add opencode-sessions-forever
+```
+
+Or drop this folder into either location manually, then restart OpenCode
 (or run `opencode service restart`):
 
 ```

@@ -1,0 +1,48 @@
+{
+  "name": "opencode-sessions-forever",
+  "version": "1.0.2",
+  "description": "OpenCode plugin: save any conversation as a single portable .sf archive (a real OpenCode database) and restore it later as a native session — on any machine, as many instances as you like. /session-save + /session-load with a native picker and auto tab open.",
+  "type": "module",
+  "license": "MIT",
+  "author": {
+    "name": "LinXuan"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linxuan-sys/opencode-session-forever.git"
+  },
+  "homepage": "https://github.com/linxuan-sys/opencode-session-forever#readme",
+  "bugs": {
+    "url": "https://github.com/linxuan-sys/opencode-session-forever/issues"
+  },
+  "keywords": [
+    "opencode",
+    "opencode-plugin",
+    "tui",
+    "session",
+    "archive",
+    "export",
+    "import",
+    "sqlite",
+    "portable"
+  ],
+  "engines": {
+    "opencode": ">=2.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "index.ts",
+    "tui.ts",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": "./index.ts",
+    "./tui": "./tui.ts"
+  },
+  "peerDependencies": {
+    "@opencode/plugin": ">=2.1.0"
+  }
+}

@@ -57,7 +57,7 @@ async function disposable<T>(fn: (env: NodeJS.ProcessEnv, bin: string) => Promis
 // Read-only quick peek at the session label inside a .sf (id/title/count); falls back to the file name
 function peek(file: string): { id?: string; title?: string; count?: number; created?: number } {
   try {
-    const db = new Database(file, { readOnly: true, readonly: true } as any)
+    const db = new Database(file, { readonly: true })
     try {
       const row: any = db.query("select id, title, time_created from session_v2 limit 1").get()
       const cnt: any = db.query("select count(*) as n from session_message").get()

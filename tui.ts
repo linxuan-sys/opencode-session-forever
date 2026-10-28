@@ -132,14 +132,17 @@ export default Plugin.define({
         })
         const dbPath = path.join(env.XDG_DATA_HOME!, "opencode", "opencode.db")
         if (!fs.existsSync(dbPath)) throw new Error("The disposable instance did not produce a database file")
-        // Data-loss guard: merge any leftover WAL (abnormal exit) back into the main file
-        if (fs.existsSync(dbPath + "-wal")) {
-          const db = new Database(dbPath)
+        // Data-loss guard + zero footprint: merge any leftover WAL back into the main file,
+        // then switch to DELETE journal mode so a read-only open of the archive never creates
+        // -shm/-wal side files next to it.
+        const db = new Database(dbPath)
+        try {
           try {
             db.exec("PRAGMA wal_checkpoint(TRUNCATE)")
-          } finally {
-            db.close()
-          }
+          } catch {}
+          db.exec("PRAGMA journal_mode=DELETE")
+        } finally {
+          db.close()
         }
         await fsp.copyFile(dbPath, target)
       })

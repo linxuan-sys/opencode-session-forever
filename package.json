@@ -1,6 +1,6 @@
 {
   "name": "opencode-sessions-forever",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "OpenCode plugin: save any conversation as a single portable .sf archive (a real OpenCode database) and restore it later as a native session — on any machine, as many instances as you like. /session-save + /session-load with a native picker and auto tab open.",
   "type": "module",
   "license": "MIT",
